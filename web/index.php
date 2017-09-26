@@ -7,5 +7,6 @@ require(__DIR__ . '/../vendor/yiisoft/yii2/Yii.php');
 
 $config = require(__DIR__ . '/../config/web.php');
 
-(new yii\web\Application($config))->run();
-
+$application = new yii\web\Application($config);
+$application -> language = isset(\Yii::$app->session['language']) ? \Yii::$app->session['language'] : 'zh-CN';
+$application -> run();

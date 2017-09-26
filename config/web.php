@@ -23,6 +23,9 @@ return [
 			'admin/*',//允许所有人访问admin节点及其子节点
 			'setting/*',
 			'ad/*',
+			'contact/*',
+			'about/*',
+			'blog/*',
 		]
 	],
 	'components' => [

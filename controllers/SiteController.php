@@ -2,7 +2,14 @@
 namespace app\controllers;
 
 use yii\web\Controller;
+use xj\thumb\ThumbAction;
+use xj\thumb\models\ThumbRequest;
+// use xj\thumb\ThumbHelper;
 
+
+/**
+ * 首页 、语言切换 和 缩略图生成
+ */
 class SiteController extends  Controller
 {
 	
@@ -43,8 +50,20 @@ class SiteController extends  Controller
         ];
     }
 	
+	public function actionLanguage(){
+        $language=  \Yii::$app->request->get('lang');
+        if(isset($language)){
+            \Yii::$app->session['language']=$language;
+        }
+        //切换完语言哪来的返回到哪里
+        $this->goBack(\Yii::$app->request->headers['Referer']);
+    }
+	
 	public function actionIndex()
 	{
+		echo \Yii::$app->language;
+		echo  \Yii::$app->urlManager->createUrl(['/site/language','lang'=>'zh_CN']);
+		exit;
 		return $this->render('index');
 	}
 	
